@@ -93,7 +93,7 @@ Already using Claude, ChatGPT, or Codex? Paste this prompt and let the AI do the
 ```
 Clone the Google Maps scraper from https://github.com/worldscraping/google-maps-scraper
 and set it up. My MagneticProxy credentials are:
-- Username: customer-YOURUSERNAME
+- Username: YOURUSERNAME
 - Password: YOURPASSWORD
 
 Then scrape all [BUSINESS TYPE] in [CITY, COUNTRY] and export the results to CSV.
@@ -113,7 +113,7 @@ This scraper uses [MagneticProxy](https://www.magneticproxy.com) residential pro
 
 2. **Choose a Residential plan.** You can start with the smallest plan for just $1 to test the scraper (at the time of writing, there is a `firstpurchase` coupon that saves $4 on any plan). For real scraping, I recommend at least **10 GB of bandwidth**. A typical city scrape uses 1-3 GB depending on the city size and number of results, while a large metro like New York or Los Angeles can use 3-5 GB.
 
-3. **Get your credentials.** After purchasing, go to your dashboard. You will find your proxy username (starts with `customer-`) and password.
+3. **Get your credentials.** After purchasing, go to [My Proxies](https://app.magneticproxy.com/#/my-proxies) in your dashboard. You will find your proxy username and password there.
 
 4. **Create your `.env` file.** Copy the example file and paste your credentials:
 
@@ -124,7 +124,7 @@ cp .env.example .env
 Then edit `.env`:
 
 ```
-MAGNETIC_USERNAME=customer-yourusername
+MAGNETIC_USERNAME=yourusername
 MAGNETIC_PASSWORD=yourpassword
 ```
 

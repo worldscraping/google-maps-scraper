@@ -71,7 +71,7 @@ class MagneticProxy:
         return self._consecutive_failures
 
     def _build_username(self, country=None, city=None, session_id=None):
-        parts = [self.username]
+        parts = [f"customer-{self.username}"]
         if country:
             parts.append(f"cc-{country}")
         if city:
