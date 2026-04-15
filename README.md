@@ -184,10 +184,10 @@ Google Maps limits search results to roughly 200 businesses per query, no matter
 
 ### Reliability
 
-The scraper is built to handle the instability of residential proxies:
+The scraper is built for large-scale, uninterrupted data extraction:
 
 - Each request retries up to **7 times** with exponential backoff (up to ~10 minutes of retry window)
-- A **circuit breaker** detects sustained proxy failures and runs a connectivity health check before continuing
+- A **circuit breaker** automatically detects connectivity issues and runs a health check before continuing
 - **Failed cells are retried** at the end of the main scraping pass instead of being permanently skipped
 - The scraper saves a **checkpoint after every cell**, so you can resume from exactly where you left off with `--resume`
 
