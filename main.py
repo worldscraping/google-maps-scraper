@@ -185,6 +185,7 @@ def main():
 
     # Scrape
     start_time = time.time()
+    logging.info("Saving results to: %s", os.path.abspath(output_path))
     logging.info("Starting scrape: '%s'", search_query)
 
     results = scrape_grid(
