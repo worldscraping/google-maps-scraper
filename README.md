@@ -1,6 +1,6 @@
 # Google Maps Scraper
 
-A Python script to scrape Google Maps and export business data to CSV. Get names, addresses, phone numbers, ratings, websites, and opening hours for any city — ready for lead generation, market research, or competitive analysis. No browser or Selenium needed.
+A Python script to scrape Google Maps and export business data to CSV. Get names, addresses, phone numbers, ratings, websites, and opening hours for any city - ready for lead generation, market research, or competitive analysis. No browser or Selenium needed.
 
 > **Disclaimer:** This tool is provided for educational and research purposes only. By using this Google Maps Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, or for unethical purposes.
 
@@ -18,12 +18,12 @@ A Python script to scrape Google Maps and export business data to CSV. Get names
 
 ## Google Maps Scraper Features
 
-- **Grid-based city coverage** — divides any city into a grid of small cells to capture every business, not just the first page of results
-- **CSV export** — clean output with 9 data fields per business, ready for spreadsheets, CRMs, or databases
-- **Residential proxy resilience** — 7 retries with exponential backoff, circuit breaker, automatic health checks, and failed cell retry queue
-- **Checkpoint and resume** — interrupted scrapes pick up exactly where they left off
-- **Cross-cell deduplication** — businesses that appear in overlapping cells are only counted once
-- **Anti-detection** — header rotation, session management, and adaptive delays between requests
+- **Grid-based city coverage** - divides any city into a grid of small cells to capture every business, not just the first page of results
+- **CSV export** - clean output with 9 data fields per business, ready for spreadsheets, CRMs, or databases
+- **Residential proxy resilience** - 7 retries with exponential backoff, circuit breaker, automatic health checks, and failed cell retry queue
+- **Checkpoint and resume** - interrupted scrapes pick up exactly where they left off
+- **Cross-cell deduplication** - businesses that appear in overlapping cells are only counted once
+- **Anti-detection** - header rotation, session management, and adaptive delays between requests
 
 ## What Data Can You Extract?
 
@@ -55,12 +55,12 @@ Each business is exported with 9 data fields. Here is a complete sample row:
 
 This Google Maps scraper is built for anyone who needs local business data at scale:
 
-- **Lead generation** — build targeted prospect lists for sales outreach. Scrape every business in a category across an entire city, complete with phone numbers, websites, and addresses ready to import into your CRM
-- **Market research** — analyze the competitive landscape for any industry in any city. See how many businesses operate, where they cluster, and how they rate
-- **Local SEO audits** — extract Google Maps data to audit local search presence for your clients or competitors
-- **Data enrichment** — enrich existing business databases with phone numbers, websites, ratings, and opening hours pulled directly from Google Maps
-- **Sales enablement** — gather intel on prospects' locations, ratings, and online presence before outreach calls
-- **Content and reporting** — create data-driven market reports, location analyses, or industry comparisons backed by real Google Maps data
+- **Lead generation** - build targeted prospect lists for sales outreach. Scrape every business in a category across an entire city, complete with phone numbers, websites, and addresses ready to import into your CRM
+- **Market research** - analyze the competitive landscape for any industry in any city. See how many businesses operate, where they cluster, and how they rate
+- **Local SEO audits** - extract Google Maps data to audit local search presence for your clients or competitors
+- **Data enrichment** - enrich existing business databases with phone numbers, websites, ratings, and opening hours pulled directly from Google Maps
+- **Sales enablement** - gather intel on prospects' locations, ratings, and online presence before outreach calls
+- **Content and reporting** - create data-driven market reports, location analyses, or industry comparisons backed by real Google Maps data
 
 ## Quick Start
 
@@ -74,7 +74,7 @@ pip install -r requirements.txt
 
 ### 2. Set up your proxy
 
-This scraper requires a residential proxy from [MagneticProxy](https://magneticproxy.com) to work reliably. See the [Proxy Setup](#proxy-setup) section below for step-by-step instructions.
+This scraper requires a residential proxy from [MagneticProxy](https://www.magneticproxy.com) to work reliably. See the [Proxy Setup](#proxy-setup) section below for step-by-step instructions.
 
 ### 3. Run your first scrape
 
@@ -105,19 +105,17 @@ Don't have proxy credentials yet? Follow the [Proxy Setup](#proxy-setup) steps b
 
 ## Proxy Setup
 
-This scraper uses [MagneticProxy](https://magneticproxy.com) residential proxies to route requests through real residential IPs. This is what prevents blocks and CAPTCHAs when scraping Google Maps at scale.
+This scraper uses [MagneticProxy](https://www.magneticproxy.com) residential proxies to route requests through real residential IPs. This is what prevents blocks and CAPTCHAs when scraping Google Maps at scale.
 
 ### Step-by-step setup
 
-1. **Create an account** at [magneticproxy.com](https://magneticproxy.com) and sign up.
+1. **Create an account** at [magneticproxy.com](https://www.magneticproxy.com) and sign up.
 
-2. **Choose a Residential plan.** Pick a plan with at least **10 GB of bandwidth**. A typical city scrape uses 1-3 GB depending on the city size, grid density, and number of results. A large metro like New York or Los Angeles can use 3-5 GB.
+2. **Choose a Residential plan.** You can start with the smallest plan for just $1 to test the scraper (at the time of writing, there is a `firstpurchase` coupon that saves $4 on any plan). For real scraping, I recommend at least **10 GB of bandwidth**. A typical city scrape uses 1-3 GB depending on the city size and number of results, while a large metro like New York or Los Angeles can use 3-5 GB.
 
-3. **Apply the coupon code `firstpurchase`** at checkout to save $4 on any plan.
+3. **Get your credentials.** After purchasing, go to your dashboard. You will find your proxy username (starts with `customer-`) and password.
 
-4. **Get your credentials.** After purchasing, go to your dashboard. You will find your proxy username (starts with `customer-`) and password.
-
-5. **Create your `.env` file.** Copy the example file and paste your credentials:
+4. **Create your `.env` file.** Copy the example file and paste your credentials:
 
 ```bash
 cp .env.example .env
@@ -130,7 +128,7 @@ MAGNETIC_USERNAME=customer-yourusername
 MAGNETIC_PASSWORD=yourpassword
 ```
 
-6. **Verify the connection.** Run any scrape command. The scraper runs a proxy health check at startup and will tell you immediately if the credentials are wrong or the proxy is unreachable.
+5. **Verify the connection.** Run any scrape command. The scraper runs a proxy health check at startup and will tell you immediately if the credentials are wrong or the proxy is unreachable.
 
 ## Usage
 
@@ -181,8 +179,8 @@ Google Maps limits search results to roughly 200 businesses per query, no matter
 1. **Geocode** the city name into a bounding box using OpenStreetMap
 2. **Generate a grid** of overlapping cells (default 2 km each) that covers the entire city
 3. **Scrape each cell** independently with pagination (up to 10 pages of 20 results per cell)
-4. **Deduplicate** results across cells — businesses near cell borders appear in multiple cells but are only kept once
-5. **Export to CSV** — results are written progressively, so you get partial data even if the scrape is interrupted
+4. **Deduplicate** results across cells - businesses near cell borders appear in multiple cells but are only kept once
+5. **Export to CSV** - results are written progressively, so you get partial data even if the scrape is interrupted
 
 ### Reliability
 
@@ -197,11 +195,11 @@ The scraper is built to handle the instability of residential proxies:
 
 ### How much bandwidth does a Google Maps scrape use?
 
-A typical city scrape uses **1-3 GB** depending on the city size and how many businesses match your query. A small town might use under 500 MB, while a large metro like New York City can use 3-5 GB. We recommend starting with a **10 GB plan** from MagneticProxy to have enough room for multiple scrapes.
+A typical city scrape uses **1-3 GB** depending on the city size and how many businesses match your query. A small town might use under 500 MB, while a large metro like New York City can use 3-5 GB. I recommend starting with a **10 GB plan** from MagneticProxy to have enough room for multiple scrapes.
 
 ### Can I use this Google Maps scraper for lead generation?
 
-Yes. This is one of the most common use cases. Scrape every business in a specific category (e.g., barbershops, dentists, restaurants) across an entire city and export the results to CSV. You get business names, phone numbers, websites, and addresses — everything you need to build a targeted prospect list and import it into your CRM or outreach tool.
+Yes. This is one of the most common use cases. Scrape every business in a specific category (e.g., barbershops, dentists, restaurants) across an entire city and export the results to CSV. You get business names, phone numbers, websites, and addresses - everything you need to build a targeted prospect list and import it into your CRM or outreach tool.
 
 ### Can I scrape Google Maps without getting blocked?
 
